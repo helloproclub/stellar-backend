@@ -1,11 +1,17 @@
-const bodyParser = require('body-parser')
 const express = require('express')
 const app = express()
+const bodyParser = require('body-parser')
+
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
+
+const todo = require('./routes/todo')
+app.use(todo)
+
+let port = 5000
 
 app.get('/', (req, res) => {
-  res.send('Server Worked')
+  res.send('Server running in port: ', port)
 })
 
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
-app.listen(5000)
+app.listen(port)
