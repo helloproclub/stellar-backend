@@ -14,5 +14,10 @@ const User = sequelize.define('users', {
 }, {
   freezeTableName: true
 })
+/*
+User.associate = (models) => {
+    User.hasMany(models.Post, { foreignKey: 'id_user' });
+};
+*/
 
 module.exports = User;
