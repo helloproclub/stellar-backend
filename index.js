@@ -7,6 +7,8 @@ app.use(bodyParser.json());
 
 const todo = require('./routes/todo');
 app.use(todo);
+const user = require('./routes/user');
+app.use('/user', user);
 
 let port = 5000;
 

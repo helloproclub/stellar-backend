@@ -1,15 +1,18 @@
-'use strict';
+const Sequelize = require('sequelize');
+const sequelize = require('../database/connection');
 
-module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define('User', {
-    id_user: DataTypes.INTEGER,
-    name: DataTypes.STRING,
-    email: DataTypes.STRING,
-    password: DataTypes.STRING,
-    role: DataTypes.INTEGER
-  }, {});
-  User.associate = function (models) {
-    // User.hasMany(models.Post, { foreignKey: 'id_user' });
-  };
-  return User;
-};
+const User = sequelize.define('users', {
+  id_user: {
+    type: Sequelize.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
+  },
+  name: Sequelize.STRING,
+  email: Sequelize.STRING,
+  password: Sequelize.STRING,
+  role: Sequelize.INTEGER
+}, {
+  freezeTableName: true
+})
+
+module.exports = User;
